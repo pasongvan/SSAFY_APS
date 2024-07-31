@@ -31,13 +31,48 @@ public class Practice {
 		}
 		
 		// 달팽이 숫자
-		
-		
+		int[] dirRow = {0, 1, 0, -1};
+		int[] dirCol = {1, 0, -1, 0};
+		int[][] snail = new int[3][3];
+		int idxDir = 0;
+		int row = 0;
+		int col = 0;
+
+		for (int num=1; num<=9; num++) {
+			snail[row][col] = num;
+			
+			// 행, 열 조정
+			row += dirRow[idxDir];
+			col += dirCol[idxDir];
+			
+			if (col>2 || col<0 || row>2 || row<0 || snail[row][col]>0) {
+				row -= dirRow[idxDir];
+				col -= dirCol[idxDir];
+				idxDir = (idxDir+1)%4;
+				row += dirRow[idxDir];
+				col += dirCol[idxDir];
+			}
+		}
+		System.out.println(Arrays.deepToString(snail));
 		
 		// 사과나무 영양분
+		// 델타배열
+		int[][] field = {{0,0,0,0,0}, {0,1,1,2,0}, {0,1,1,1,0}, {0,9,1,3,0}, {0,0,0,0,0}};
+		int[] delta1 = {0, 0, 0, 1, -1};
+		int[] delta2 = {1, -1, 0, 0, 0};
+		int maxSum = 0;
 		
-		
-		
+		for (int i=1; i<4; i++) {
+			for (int j=1; j<4; j++) {
+				int summ = 0;
+				for (int d=0; d<5; d++) {
+					summ += field[i+delta1[d]][j+delta2[d]];
+				}
+				if (maxSum < summ)
+					maxSum = summ;
+			}
+		}
+		System.out.println(maxSum);		
 		
 		// 지그재그 순회
 		int[][] arr1 = new int[5][5];
