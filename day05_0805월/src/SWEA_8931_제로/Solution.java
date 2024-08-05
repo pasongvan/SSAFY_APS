@@ -11,22 +11,21 @@ public class Solution {
 			//변수 설정 및 입력=================================================
 			int K = sc.nextInt();
 			int[] book = new int[K];
-			int idx = 0;
+			int top = -1;
 			
 			// 장부 작성======================================================
 			for (int i=0; i<K; i++) {
-				book[idx] = sc.nextInt();
-				if (book[idx] != 0) {
-					idx++;
+				int input = sc.nextInt();
+				if (input != 0) {
+					book[++top] = input;
 				}
 				else {
-					idx--;
-					book[idx] = 0;
+					book[top--] = 0;
 				}
 			}
 			// 장부 합 계산====================================================
 			int sum = 0;
-			for (int i=0; i<K; i++) {
+			for (int i=0; i<=top; i++) {
 				sum += book[i];
 			}
 			
