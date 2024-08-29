@@ -1,18 +1,16 @@
-설계: 11:46 ~ 12:00
-코딩: 12:00 ~ 12:26
+1차원 정수 배열 queen
+인덱스: 열위치, 원소: 행위치
 
-퀸은 각 행에 하나씩, 각 열에 하나씩 있어야
+method(int row)
 
-재귀 함수(row)
-
-기저조건1: row==N 이면 cnt++, return
-
-기저조건2: 열방향으로 겹치는 게 있으면 return
-
-기저조건3: 대각선방향으로 겹치는 게 있으면 return
+기저조건
+row == N
+경우의 수 추가
 
 재귀부분
 for (col: 0 ~ N-1)
-visit[row][col]
-함수(row+1)
-visit 복구
+queen[col]==0이고
+queen의 나머지 원소 |인덱스-col|!=원소 이면
+queen[col] = row
+method(row+1)
+queen[col] = 0
