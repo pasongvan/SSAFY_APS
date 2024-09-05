@@ -69,6 +69,7 @@ public class Prim반복문 {
 			ans += dist[i];
 		}
 		System.out.println(ans);
+		System.out.println(Arrays.toString(dist));
 	}
 
 	
